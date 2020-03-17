@@ -2,14 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { AdminComponent } from './admin/admin.component';
+import { ManualComponent } from './manual/manual.component';
+import { CliComponent } from './cli/cli.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent,
-    UserComponent
+    ManualComponent,
+    CliComponent
   ],
   imports: [
     BrowserModule
