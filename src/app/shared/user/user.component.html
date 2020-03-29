@@ -1,0 +1,8 @@
+<div class="card" class="{{user.isDeleted ? 'deleted-card' : 'active-card'}}">
+    <span>{{user.firstName + " "+ user.lastName}}</span>
+    <button 
+        class="{{user.isDeleted ? 'active-button' : 'deleted-button'}}" 
+        (click)="modifyStatus(user.id)">
+        {{user.isDeleted ? 'Activate' : 'Deactivate'}}
+    </button>
+</div>

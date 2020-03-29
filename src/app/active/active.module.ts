@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActiveUserComponent } from './active-user/active-user.component';
-import { ActiveUserListComponent } from './active-user-list/active-user-list.component';
+import { SharedModule } from '../shared/shared/shared.module';
+import { ActiveComponent } from './active.component';
 
 @NgModule({
-  declarations: [ ActiveUserComponent, ActiveUserListComponent ],
+  declarations: [ ActiveComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
-    ActiveUserComponent, ActiveUserListComponent
+    SharedModule, ActiveComponent
   ]
 })
 export class ActiveModule { }
