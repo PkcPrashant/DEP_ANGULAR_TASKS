@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ActiveModule } from './active/active.module';
 import { DeletedModule } from './deleted/deleted.module';
-import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
   declarations: [
