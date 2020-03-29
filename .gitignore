@@ -44,3 +44,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+
+Folders
+src/app/deleted
+src/app/manage
+src/app/user-details
