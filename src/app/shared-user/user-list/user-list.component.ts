@@ -9,6 +9,7 @@ import { UserStructure } from 'src/app/user-structure.model';
 export class UserListComponent {
 
   @Input() usersList: UserStructure[];
+  @Input() showUserDetails: boolean;
 
   @Output() changeStatus: EventEmitter<string> = new EventEmitter();
 

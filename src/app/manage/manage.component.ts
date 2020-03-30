@@ -11,6 +11,7 @@ import { UserStructure } from '../user-structure.model';
 export class ManageComponent implements OnInit {
 
   users: UserStructure[];
+  showUserDetails: boolean = true;
 
   constructor(private usersService: UsersService, private router: Router) { }
 

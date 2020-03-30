@@ -10,6 +10,7 @@ import { UserStructure } from '../user-structure.model';
 export class DeletedComponent implements OnInit {
 
   deletedUsers: UserStructure[];
+  showUserDetails: boolean = false;
 
   constructor(private usersService: UsersService) {}
 

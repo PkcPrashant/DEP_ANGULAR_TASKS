@@ -11,6 +11,8 @@ export class ActiveComponent implements OnInit {
 
   activeUsers: UserStructure[];
 
+  showUserDetails: boolean = false;
+
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void{
