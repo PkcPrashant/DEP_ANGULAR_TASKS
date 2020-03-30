@@ -7,18 +7,23 @@ import { UserStructure } from '../user-structure.model';
   templateUrl: './deleted.component.html',
   styleUrls: ['./deleted.component.css']
 })
-export class DeletedComponent {
+export class DeletedComponent implements OnInit {
 
   deletedUsers: UserStructure[];
 
   constructor(private usersService: UsersService) {}
 
-  ngDoCheck(){
+  ngOnInit(): void{
+    this.loadDeletedUsers();
+  }
+
+  loadDeletedUsers(): void{
     this.deletedUsers = this.usersService.getInActiveUsers();
   }
 
   activateUser(id: string): void {
     this.usersService.changeStatus(id);
+    this.loadDeletedUsers();
   }
 
 }
