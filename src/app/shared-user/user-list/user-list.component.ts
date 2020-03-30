@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { UserStructure } from 'src/app/user-structure.model';
 
 @Component({
   selector: 'app-user-list',
@@ -7,11 +8,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class UserListComponent {
 
-  @Input() usersList;
+  @Input() usersList: UserStructure[];
 
   @Output() changeStatus: EventEmitter<string> = new EventEmitter();
 
-  modifyStatus(id: string) {
+  modifyStatus(id: string): void {
     this.changeStatus.emit(id);
   }
 

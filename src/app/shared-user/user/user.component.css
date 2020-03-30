@@ -23,10 +23,14 @@ button{
     border: 2px solid red;
 }
 
-.active-button{
+.activate-button{
     background-color: green;
 }
 
-.deleted-button{
+.deactivate-button{
     background-color: red;
+}
+
+.manage-button{
+    background-color: blue;
 }

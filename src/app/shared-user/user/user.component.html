@@ -1,0 +1,18 @@
+<div class="card" class="{{user.isDeleted ? 'deleted-card' :'active-card'}}">
+    <span>{{user.firstName + " "+ user.lastName}}</span>
+    <button *ngIf="className==='active'"
+        class="deactivate-button" 
+        (click)="modifyStatus(user.id)">
+        Deactivate
+    </button>
+    <button *ngIf="className==='deleted'"
+        class="activate-button" 
+        (click)="modifyStatus(user.id)">
+        Activate
+    </button>
+    <button *ngIf="className==='manage'"
+        class="manage-button" 
+        (click)="modifyStatus(user.id)">
+        Details
+    </button>
+</div>

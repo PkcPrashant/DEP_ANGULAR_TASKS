@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { UserStructure } from '../user-structure.model';
 
 @Component({
   selector: 'app-active',
@@ -8,16 +9,16 @@ import { UsersService } from '../users.service';
 })
 export class ActiveComponent {
 
-  activeUsers = [];
+  activeUsers: UserStructure[];
 
-  constructor(private users: UsersService) {}
+  constructor(private usersService: UsersService) {}
 
   ngDoCheck(){
-    this.activeUsers = this.users.getActiveUsers();
+    this.activeUsers = this.usersService.getActiveUsers();
   }
 
-  deactivate(id: string) {
-    this.users.changeStatus(id);
+  deActivateUser(id: string): void {
+    this.usersService.changeStatus(id);
   }
 
 }

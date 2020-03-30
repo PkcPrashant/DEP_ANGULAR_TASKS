@@ -1,11 +1,8 @@
 <div class="mycards">
     <div class="mycard">
-        <div class="card" class="{{user.isDeleted ? 'deleted-card' : 'active-card'}}" *ngFor="let user of users">
-            <span>{{user.firstName + " "+ user.lastName}}</span>
-            <button (click)="showDetails(user.id)" >Details</button>
-        </div>
+        <app-user-list [usersList]="users" (changeStatus)="showDetails($event)"></app-user-list>
     </div>
-    <div>
+    <div class="details">
         <router-outlet></router-outlet>
     </div>
 </div>

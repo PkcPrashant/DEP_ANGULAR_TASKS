@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { UserStructure } from '../user-structure.model';
 
 @Component({
   selector: 'app-deleted',
@@ -8,16 +9,16 @@ import { UsersService } from '../users.service';
 })
 export class DeletedComponent {
 
-  deletedUsers = [];
+  deletedUsers: UserStructure[];
 
-  constructor(private users: UsersService) {}
+  constructor(private usersService: UsersService) {}
 
   ngDoCheck(){
-    this.deletedUsers = this.users.getInActiveUsers();
+    this.deletedUsers = this.usersService.getInActiveUsers();
   }
 
-  activate(id: string) {
-    this.users.changeStatus(id);
+  activateUser(id: string): void {
+    this.usersService.changeStatus(id);
   }
 
 }

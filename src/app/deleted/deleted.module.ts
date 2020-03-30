@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DeletedComponent } from './deleted.component';
-import { SharedModule } from '../shared/shared/shared.module';
+import { SharedUserModule } from '../shared-user/shared-user/shared-user.module';
 
 
 
@@ -9,7 +9,7 @@ import { SharedModule } from '../shared/shared/shared.module';
   declarations: [ DeletedComponent ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedUserModule
   ],
   exports: [
     DeletedComponent

@@ -9,6 +9,9 @@ const routes: Routes = [
   { path: 'deleted', component: DeletedComponent },
   { path: 'manage', 
     loadChildren: ()=> import('./manage/manage.module').then(file => file.ManageModule)
+  },
+  {
+    path: '**', redirectTo: '', pathMatch: 'full'
   }
 ];
 

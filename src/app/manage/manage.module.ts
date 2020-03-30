@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManageComponent } from './manage.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UserDetailsComponent } from '../shared/user-details/user-details.component';
+import { UserDetailsComponent } from '../shared-user/user-details/user-details.component';
+import { SharedUserModule } from '../shared-user/shared-user/shared-user.module';
 
 const routes: Routes = [
   { 
@@ -17,6 +18,7 @@ const routes: Routes = [
   declarations: [ManageComponent],
   imports: [
     CommonModule,
+    SharedUserModule,
     RouterModule.forChild(routes)
   ],
   exports: [

@@ -17,4 +17,4 @@ import { UserDetailsComponent } from '../user-details/user-details.component';
     UserListComponent
   ]
 })
-export class SharedModule { }
+export class SharedUserModule { }
