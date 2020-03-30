@@ -1,0 +1,24 @@
+.details{
+    border: 2px solid blue;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail{
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+.name{
+    font-size: large;
+    font-weight: 800;
+}
+
+.active{
+    color: green;
+}
+
+.deleted{
+    color: red;
+}

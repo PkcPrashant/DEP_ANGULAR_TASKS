@@ -1,0 +1,36 @@
+.card{
+    margin: 10px;
+    padding: 10px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button{
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.active-card{
+    border: 2px solid green;
+}
+
+.deleted-card{
+    border: 2px solid red;
+}
+
+.activate-button{
+    background-color: green;
+}
+
+.deactivate-button{
+    background-color: red;
+}
+
+.manage-button{
+    background-color: blue;
+}

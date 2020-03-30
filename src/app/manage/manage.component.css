@@ -1,0 +1,14 @@
+.mycards{
+    display: flex;
+    flex-direction: row;
+}
+.mycard{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.details{
+    width: 25%;
+    height: fit-content;
+}

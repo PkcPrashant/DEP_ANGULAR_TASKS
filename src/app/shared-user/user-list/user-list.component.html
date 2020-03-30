@@ -1,0 +1,7 @@
+<div *ngFor="let user of usersList">
+    <app-user 
+        [user]="user" 
+        (changeStatus)="modifyStatus($event)"
+        [showUserDetails]="showUserDetails">
+    </app-user>
+</div>
