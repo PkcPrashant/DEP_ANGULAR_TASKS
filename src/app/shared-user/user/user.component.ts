@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { UserStructure } from 'src/app/user-structure.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +11,7 @@ export class UserComponent {
 
   className: string;
 
-  @Input() user: UserStructure;
+  @Input() user;
   @Input() showUserDetails: boolean;
 
   @Output() changeStatus: EventEmitter<string> = new EventEmitter();

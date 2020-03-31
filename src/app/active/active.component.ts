@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { UserStructure } from '../user-structure.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-active',
@@ -9,7 +10,7 @@ import { UserStructure } from '../user-structure.model';
 })
 export class ActiveComponent implements OnInit {
 
-  activeUsers: UserStructure[];
+  activeUsers: Observable<any>;
 
   showUserDetails: boolean = false;
 

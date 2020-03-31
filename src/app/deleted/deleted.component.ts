@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { UserStructure } from '../user-structure.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-deleted',
@@ -9,7 +10,7 @@ import { UserStructure } from '../user-structure.model';
 })
 export class DeletedComponent implements OnInit {
 
-  deletedUsers: UserStructure[];
+  deletedUsers: Observable<any>;
   showUserDetails: boolean = false;
 
   constructor(private usersService: UsersService) {}

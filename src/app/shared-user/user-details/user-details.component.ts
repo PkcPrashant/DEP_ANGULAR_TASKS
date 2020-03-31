@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/users.service';
 import { UserStructure } from 'src/app/user-structure.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
@@ -10,7 +11,7 @@ import { UserStructure } from 'src/app/user-structure.model';
 })
 export class UserDetailsComponent implements OnInit {
 
-  user: UserStructure;
+  user;
 
   constructor(private route: ActivatedRoute, private usersService: UsersService) { }
 

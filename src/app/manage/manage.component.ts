@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Router } from '@angular/router';
 import { UserStructure } from '../user-structure.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manage',
@@ -10,7 +11,7 @@ import { UserStructure } from '../user-structure.model';
 })
 export class ManageComponent implements OnInit {
 
-  users: UserStructure[];
+  users: Observable<any>;
   showUserDetails: boolean = true;
 
   constructor(private usersService: UsersService, private router: Router) { }
