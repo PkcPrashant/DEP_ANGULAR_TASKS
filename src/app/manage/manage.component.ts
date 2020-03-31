@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ManageComponent implements OnInit {
 
-  users: Observable<any>;
+  users: Observable<UserStructure[]>;
   showUserDetails: boolean = true;
 
   constructor(private usersService: UsersService, private router: Router) { }
@@ -20,8 +20,8 @@ export class ManageComponent implements OnInit {
     this.users = this.usersService.getUsers();
   }
 
-  showDetails(id: string): void {
-    this.router.navigate(['manage', id]);
+  showDetails(userData): void {
+    this.router.navigate(['manage', userData.id]);
   }
 
 }

@@ -3,7 +3,7 @@
     <button 
         class="{{showUserDetails ? 'manage-button' : 
             (user?.isDeleted ? 'activate-button' : 'deactivate-button')}}"
-        (click)="modifyStatus(user.id)"
+        (click)="modifyStatus(user)"
     >
     {{showUserDetails ? 'Details' : (user?.isDeleted ? 'Activate' : 'Deactivate')}}
     </button>

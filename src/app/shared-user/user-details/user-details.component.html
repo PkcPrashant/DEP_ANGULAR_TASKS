@@ -1,5 +1,4 @@
 <div class="details">
-    {{user}}
     <div class="detail"><span class="name">{{ user?.firstName + " " + user?.lastName }}</span></div>
     <div class="detail"><span class="{{ user?.isDeleted ? 'deleted' : 'active' }}">{{ user?.isDeleted ? 'Deleted' : 'Active' }}</span></div>
     <div class="detail"><span>Login Id: </span><span>{{ user?.login }}</span></div>

@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UserStructure } from 'src/app/user-structure.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -9,13 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class UserListComponent {
 
-  @Input() usersList: Observable<any>;
+  @Input() usersList: UserStructure[];
   @Input() showUserDetails: boolean;
 
   @Output() changeStatus: EventEmitter<string> = new EventEmitter();
 
-  modifyStatus(id: string): void {
-    this.changeStatus.emit(id);
+  modifyStatus(userData): void {
+    this.changeStatus.emit(userData);
   }
 
 }

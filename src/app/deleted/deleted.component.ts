@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class DeletedComponent implements OnInit {
 
-  deletedUsers: Observable<any>;
+  deletedUsers: Observable<UserStructure[]>;
   showUserDetails: boolean = false;
 
   constructor(private usersService: UsersService) {}
@@ -23,9 +23,11 @@ export class DeletedComponent implements OnInit {
     this.deletedUsers = this.usersService.getInActiveUsers();
   }
 
-  activateUser(id: string): void {
-    this.usersService.changeStatus(id);
-    this.loadDeletedUsers();
+  activateUser(userData): void {
+    this.usersService.changeStatus(userData)
+    .subscribe(
+      () => this.loadDeletedUsers()
+    );
   }
 
 }

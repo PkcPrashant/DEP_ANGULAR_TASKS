@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ActiveComponent implements OnInit {
 
-  activeUsers: Observable<any>;
+  activeUsers: Observable<UserStructure[]>;
 
   showUserDetails: boolean = false;
 
@@ -24,9 +24,11 @@ export class ActiveComponent implements OnInit {
     this.activeUsers = this.usersService.getActiveUsers();
   }
 
-  deActivateUser(id: string): void {
-    this.usersService.changeStatus(id);
-    this.loadActiveUsers();
+  deActivateUser(userData): void {
+    this.usersService.changeStatus(userData)
+    .subscribe(
+      () => this.loadActiveUsers()
+    );
   }
 
 }

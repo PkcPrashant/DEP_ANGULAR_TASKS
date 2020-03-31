@@ -1,4 +1,4 @@
-<div *ngFor="let user of ( usersList | async )">
+<div *ngFor="let user of usersList">
     <app-user 
         [user]="user" 
         (changeStatus)="modifyStatus($event)"
