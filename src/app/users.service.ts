@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class UsersService {  
 
   _BASE_URL: string = 'http://localhost:8080/';
-  _USERS_BASE_URL: string = `${this._BASE_URL}+users/`;
+  _USERS_BASE_URL: string = `${this._BASE_URL}users/`;
 
   constructor(private http: HttpClient){}
 
