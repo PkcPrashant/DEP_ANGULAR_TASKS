@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { UserStructure } from './user-structure.model';
+import { UserModel } from './user.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,30 +9,33 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {  
 
+  _BASE_URL: string = 'http://localhost:8080/';
+  _USERS_BASE_URL: string = `${this._BASE_URL}+users/`;
+
   constructor(private http: HttpClient){}
 
-  getUsers(): Observable<UserStructure[]>{
-    return this.http.get<UserStructure[]>('http://localhost:8080/users');
+  getUsers(): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(this._USERS_BASE_URL);
   }
 
-  changeStatus(userData: UserStructure){
-    return this.http.put('http://localhost:8080/users/'+userData.id,{
+  changeStatus(userData: UserModel): Observable<UserModel>{
+    return this.http.put<UserModel>(this._USERS_BASE_URL+userData.id,{
       isDeleted: !userData.isDeleted
     });
   }
 
-  getUser(userId: string){
-    return this.http.get('http://localhost:8080/users/'+userId);
+  getUser(userId: string): Observable<UserModel>{
+    return this.http.get<UserModel>(this._USERS_BASE_URL+userId);
   }
 
-  getActiveUsers(){
-    return this.http.get<UserStructure[]>('http://localhost:8080/users').pipe(
+  getActiveUsers(): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(this._USERS_BASE_URL).pipe(
       map(userList => userList.filter(user => !user.isDeleted))
     );
   }
 
-  getInActiveUsers(){
-    return this.http.get<UserStructure[]>('http://localhost:8080/users').pipe(
+  getInActiveUsers(): Observable<UserModel[]>{
+    return this.http.get<UserModel[]>(this._USERS_BASE_URL).pipe(
       map(userList => userList.filter(user => user.isDeleted))
     );
   }
