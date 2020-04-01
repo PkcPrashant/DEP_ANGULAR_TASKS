@@ -1,7 +1,7 @@
 <div class="mycards">
     <div class="mycard">
         <app-user-list 
-            [usersList]="users" 
+            [usersList]="users$ | async" 
             (changeStatus)="showDetails($event)"
             [showUserDetails]="showUserDetails">
         </app-user-list>

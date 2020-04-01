@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
-import { UserStructure } from '../user-structure.model';
+import { UserModel } from '../user.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-active',
@@ -9,7 +10,7 @@ import { UserStructure } from '../user-structure.model';
 })
 export class ActiveComponent implements OnInit {
 
-  activeUsers: UserStructure[];
+  activeUsers$: Observable<UserModel[]>;
 
   showUserDetails: boolean = false;
 
@@ -20,12 +21,14 @@ export class ActiveComponent implements OnInit {
   }
 
   loadActiveUsers(): void{
-    this.activeUsers = this.usersService.getActiveUsers();
+    this.activeUsers$ = this.usersService.getActiveUsers();
   }
 
-  deActivateUser(id: string): void {
-    this.usersService.changeStatus(id);
-    this.loadActiveUsers();
+  deActivateUser(userData: UserModel): void {
+    this.usersService.changeStatus(userData)
+    .subscribe(
+      () => this.loadActiveUsers()
+    );
   }
 
 }

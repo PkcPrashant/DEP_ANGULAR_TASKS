@@ -1,5 +1,5 @@
 <app-user-list 
-    [usersList]="deletedUsers" 
+    [usersList]="deletedUsers$ | async" 
     (changeStatus)="activateUser($event)"
     [showUserDetails]="showUserDetails">
 </app-user-list>
