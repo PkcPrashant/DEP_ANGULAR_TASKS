@@ -22,8 +22,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   handleExistingUser(user: UserModel): void {
-    this.usersService.updateUser(user).subscribe();
-    this.route.navigate(['manage']);
+    this.usersService.updateUser(user).subscribe(
+      (result)=> this.route.navigate(['manage']),
+      (error) => console.log("Error at handleNewUser ", error)
+    );
   }
 
 }

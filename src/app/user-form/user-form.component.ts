@@ -27,7 +27,7 @@ export class UserFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.user.subscribe(userData => {
+    this.user?.subscribe(userData => {
       this.userId = userData.id;
       this.userForm.setValue({
         firstName: userData.firstName,

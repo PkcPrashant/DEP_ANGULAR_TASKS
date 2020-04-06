@@ -17,9 +17,8 @@ export class CreateUserComponent implements OnInit {
 
   handleNewUser(userData: UserModel): void {
     this.usersService.createUser(userData).subscribe(
-      (result)=> result,
-      (error) => console.log("Error at handleNewUser ", error),
-      () => this.route.navigate(['manage'])
+      (result)=> this.route.navigate(['manage']),
+      (error) => console.log("Error at handleNewUser ", error)
     );
   }
 

@@ -35,9 +35,6 @@ export class UsersService {
   updateUser(user: Partial<UserModel>) {
     console.log("MYY ",user)
     return this.http.put(this._USERS_BASE_URL + user.id, {
-      // firstName: user.firstName,
-      // lastName: user.lastName,
-      // login: user.login,
       password: user.password,
       age: user.age
     });
