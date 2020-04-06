@@ -3,10 +3,13 @@
         <app-user-list 
             [usersList]="users$ | async" 
             (changeStatus)="showDetails($event)"
-            [showUserDetails]="showUserDetails">
+            [showUserDetails]="showUserDetails"
+            (updateUser)="updateUser($event)"
+            >
         </app-user-list>
     </div>
     <div class="details">
+        <button class="btn btn-primary" (click)="createUser()">Create</button>
         <router-outlet></router-outlet>
     </div>
 </div>

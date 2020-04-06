@@ -24,4 +24,12 @@ export class ManageComponent implements OnInit {
     this.router.navigate(['manage', userData.id]);
   }
 
+  createUser(): void {
+    this.router.navigate(['manage/create']);
+  }
+
+  updateUser(userId: string): void {
+    this.router.navigate(['manage/update', userId]);
+  }
+
 }

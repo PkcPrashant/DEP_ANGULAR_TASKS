@@ -28,6 +28,21 @@ export class UsersService {
     return this.http.get<UserModel>(this._USERS_BASE_URL+userId);
   }
 
+  createUser(user: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(this._USERS_BASE_URL, user);
+  }
+
+  updateUser(user: Partial<UserModel>) {
+    console.log("MYY ",user)
+    return this.http.put(this._USERS_BASE_URL + user.id, {
+      // firstName: user.firstName,
+      // lastName: user.lastName,
+      // login: user.login,
+      password: user.password,
+      age: user.age
+    });
+ }
+
   getActiveUsers(): Observable<UserModel[]>{
     return this.http.get<UserModel[]>(this._USERS_BASE_URL).pipe(
       map(userList => userList.filter(user => !user.isDeleted))

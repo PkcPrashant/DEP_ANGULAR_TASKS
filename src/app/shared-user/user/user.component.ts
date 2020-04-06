@@ -12,9 +12,14 @@ export class UserComponent {
   @Input() showUserDetails: boolean;
 
   @Output() changeStatus: EventEmitter<UserModel> = new EventEmitter();
+  @Output() updateUser: EventEmitter<string> = new EventEmitter();
 
   modifyStatus(userData: UserModel): void {
     this.changeStatus.emit(userData);
+  }
+
+  editUser(userId): void {
+    this.updateUser.emit(userId);
   }
 
 }
