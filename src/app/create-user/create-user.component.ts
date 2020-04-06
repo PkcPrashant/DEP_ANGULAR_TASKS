@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../user.model';
 import { UsersService } from '../users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -9,7 +10,7 @@ import { UsersService } from '../users.service';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,7 +18,8 @@ export class CreateUserComponent implements OnInit {
   handleNewUser(userData: UserModel): void {
     this.usersService.createUser(userData).subscribe(
       (result)=> result,
-      (error) => console.log("Error at handleNewUser ", error)
+      (error) => console.log("Error at handleNewUser ", error),
+      () => this.route.navigate(['manage'])
     );
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { UserModel } from '../user.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,7 +13,7 @@ export class UpdateUserComponent implements OnInit {
 
   user: Observable<UserModel>;
 
-  constructor(private usersService: UsersService, private router: ActivatedRoute) {}
+  constructor(private usersService: UsersService, private router: ActivatedRoute, public route: Router) {}
 
   ngOnInit(): void {
     this.router.params.subscribe(param => {
@@ -23,6 +23,7 @@ export class UpdateUserComponent implements OnInit {
 
   handleExistingUser(user: UserModel): void {
     this.usersService.updateUser(user).subscribe();
+    this.route.navigate(['manage']);
   }
 
 }
