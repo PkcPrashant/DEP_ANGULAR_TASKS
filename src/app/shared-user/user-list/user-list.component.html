@@ -2,6 +2,8 @@
     <app-user 
         [user]="user" 
         (changeStatus)="modifyStatus($event)"
-        [showUserDetails]="showUserDetails">
+        [showUserDetails]="showUserDetails"
+        (updateUser)="editUser($event)"
+        >
     </app-user>
 </div>
