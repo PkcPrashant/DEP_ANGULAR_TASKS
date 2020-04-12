@@ -21,7 +21,7 @@ export class ManageComponent implements OnInit {
   }
 
   showDetails(userData: UserModel): void {
-    this.router.navigate(['manage', userData.id]);
+    this.router.navigate(['manage', userData?.id]);
   }
 
   createUser(): void {
