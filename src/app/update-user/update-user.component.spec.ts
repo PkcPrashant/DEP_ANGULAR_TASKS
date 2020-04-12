@@ -7,11 +7,11 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserModel } from '../user.model';
 
-xdescribe('UpdateUserComponent', () => {
+describe('UpdateUserComponent', () => {
   let component: UpdateUserComponent;
   let fixture: ComponentFixture<UpdateUserComponent>;
   const userServiceSpy = jasmine.createSpyObj('UsersService', ['updateUser']);
-  const getQuoteSpy = userServiceSpy.updateUser.and.returnValue(of([{}]));
+  const getQuoteSpy = userServiceSpy.updateUser.and.returnValue(of({}));
 
   let usersService: UsersService;
   let router: Router;
@@ -39,9 +39,10 @@ xdescribe('UpdateUserComponent', () => {
   });
 
   // TThrowing Error Dont Know Why
-  // it('should create', () => {
-  //   let user: UserModel;
-  //   component.handleExistingUser(user);
-  //   expect(usersService.updateUser).toHaveBeenCalled();
-  // });
+  it('should create', () => {
+    spyOn(usersService, 'updateUser');
+    let user: UserModel;
+    component.handleExistingUser(user);
+    expect(usersService.updateUser).toHaveBeenCalled();
+  });
 });
