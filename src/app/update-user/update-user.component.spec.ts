@@ -10,17 +10,16 @@ import { UserModel } from '../user.model';
 describe('UpdateUserComponent', () => {
   let component: UpdateUserComponent;
   let fixture: ComponentFixture<UpdateUserComponent>;
-  const userServiceSpy = jasmine.createSpyObj('UsersService', ['updateUser']);
-  const getQuoteSpy = userServiceSpy.updateUser.and.returnValue(of({}));
+  const userServiceSpy = jasmine.createSpyObj('UsersService', ['getUser', 'updateUser']);
+  userServiceSpy.updateUser.and.returnValue(of([{}]));
 
-  let usersService: UsersService;
   let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UpdateUserComponent ],
       providers: [
-        { provide: usersService, useValue: userServiceSpy}
+        { provide: UsersService, useValue: userServiceSpy}
       ],
       imports: [
         HttpClientTestingModule,
@@ -34,15 +33,25 @@ describe('UpdateUserComponent', () => {
     fixture = TestBed.createComponent(UpdateUserComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
-    usersService = TestBed.inject(UsersService);
     fixture.detectChanges();
   });
 
-  // TThrowing Error Dont Know Why
-  it('should create', () => {
-    spyOn(usersService, 'updateUser');
+  it('should call updateUser', () => {
     let user: UserModel;
     component.handleExistingUser(user);
-    expect(usersService.updateUser).toHaveBeenCalled();
+    expect(userServiceSpy.updateUser).toHaveBeenCalled();
   });
+
+  it('should navigate to manage after updting', () => {
+    let user: UserModel;
+    spyOn(router, 'navigate');
+    component.handleExistingUser(user);
+    expect(router.navigate).toHaveBeenCalledWith(['manage']);
+  });
+
+  it('should call getUser on ngOnInit', () => {
+    component.ngOnInit();
+    expect(userServiceSpy.getUser).toHaveBeenCalled();
+  });
+
 });

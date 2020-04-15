@@ -1,8 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserFormComponent } from './user-form.component';
+import { UserModel } from '../user.model';
 
-xdescribe('UserFormComponent', () => {
+describe('UserFormComponent', () => {
   let component: UserFormComponent;
   let fixture: ComponentFixture<UserFormComponent>;
 
@@ -19,8 +20,10 @@ xdescribe('UserFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should check if change status has been called from editUser', () => {
+    spyOn(component.handleUser, 'emit');
     component.handleFormSubmit();
     expect(component.handleUser.emit).toHaveBeenCalled();
   });
+
 });

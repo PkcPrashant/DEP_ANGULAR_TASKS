@@ -27,15 +27,7 @@ describe('UserComponent', () => {
   });
 
   it('should check if change status has been called from modifyStatus', () => {
-    let user: UserModel = {
-      id: '1',
-      firstName: 'Prashant',
-      lastName: 'Choudhary',
-      login: 'pkc',
-      password: 'pkc12345',
-      age: 20,
-      isDeleted: false
-    };
+    let user: UserModel;
     spyOn(component.changeStatus, 'emit');
     component.modifyStatus(user);
     expect(component.changeStatus.emit).toHaveBeenCalledWith(user);

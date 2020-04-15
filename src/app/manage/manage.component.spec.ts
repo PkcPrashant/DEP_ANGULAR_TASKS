@@ -6,22 +6,20 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserModel } from '../user.model';
-import { stringify } from 'querystring';
 
 describe('ManageComponent', () => {
   let component: ManageComponent;
   let fixture: ComponentFixture<ManageComponent>;
   const userServiceSpy = jasmine.createSpyObj('UsersService', ['getUsers']);
-  const getQuoteSpy = userServiceSpy.getUsers.and.returnValue(of([{}]));
+  userServiceSpy.getUsers.and.returnValue(of([{}]));
 
-  let usersService: UsersService;
   let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ManageComponent ],
       providers: [
-        { provide: usersService, useValue: userServiceSpy}
+        { provide: UsersService, useValue: userServiceSpy}
       ],
       imports: [
         HttpClientTestingModule,
@@ -35,14 +33,12 @@ describe('ManageComponent', () => {
     fixture = TestBed.createComponent(ManageComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
-    usersService = TestBed.inject(UsersService);
     fixture.detectChanges();
   });
 
   it('should call getUsers on ngOnInit', () => {
-    spyOn(usersService, 'getUsers');
     component.ngOnInit();
-    expect(usersService.getUsers).toHaveBeenCalledTimes(1);
+    expect(userServiceSpy.getUsers).toHaveBeenCalled();
   });
 
   it('should navigate to create page', () => {

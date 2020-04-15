@@ -10,9 +10,9 @@ describe('ActiveComponent', () => {
   let component: ActiveComponent;
   let fixture: ComponentFixture<ActiveComponent>;
   const userServiceSpy = jasmine.createSpyObj('UsersService', ['changeStatus', 'getActiveUsers']);
-  const getQuoteSpy = userServiceSpy.changeStatus.and.returnValue(of([{}]));
+  userServiceSpy.changeStatus.and.returnValue(of([{}]));
 
-  let usersService: UsersService;
+  let user: UserModel;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,7 +28,6 @@ describe('ActiveComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ActiveComponent);
     component = fixture.componentInstance;
-    usersService = TestBed.inject(UsersService);
     fixture.detectChanges();
   });
 
@@ -39,13 +38,11 @@ describe('ActiveComponent', () => {
   });
 
   it('should call changeStatus method on deActivate', () => {
-    let user: UserModel;
     component.deActivateUser(user);
-    expect(usersService.changeStatus).toHaveBeenCalledWith(user);
+    expect(userServiceSpy.changeStatus).toHaveBeenCalledWith(user);
   })
 
   it('should call loadActiveUers on deActivate', () => {
-    let user: UserModel;
     spyOn(component, 'loadActiveUsers');
     component.deActivateUser(user);
     expect(component.loadActiveUsers).toHaveBeenCalled();

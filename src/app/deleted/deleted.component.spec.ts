@@ -10,9 +10,9 @@ describe('DeletedComponent', () => {
   let component: DeletedComponent;
   let fixture: ComponentFixture<DeletedComponent>;
   const userServiceSpy = jasmine.createSpyObj('UsersService', ['changeStatus', 'getInActiveUsers']);
-  const getQuoteSpy = userServiceSpy.changeStatus.and.returnValue(of([{}]));
+  userServiceSpy.changeStatus.and.returnValue(of([{}]));
 
-  let usersService: UsersService;
+  let user: UserModel;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,7 +28,6 @@ describe('DeletedComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DeletedComponent);
     component = fixture.componentInstance;
-    usersService = TestBed.inject(UsersService);
     fixture.detectChanges();
   });
 
@@ -39,13 +38,11 @@ describe('DeletedComponent', () => {
   });
 
   it('should call changeStatus method on activate', () => {
-    let user: UserModel;
     component.activateUser(user);
-    expect(usersService.changeStatus).toHaveBeenCalledWith(user);
+    expect(userServiceSpy.changeStatus).toHaveBeenCalledWith(user);
   })
 
   it('should call loadDeletedUsers on deActivate', () => {
-    let user: UserModel;
     spyOn(component, 'loadDeletedUsers');
     component.activateUser(user);
     expect(component.loadDeletedUsers).toHaveBeenCalled();

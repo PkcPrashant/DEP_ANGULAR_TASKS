@@ -12,10 +12,9 @@ describe('CreateUserComponent', () => {
   let component: CreateUserComponent;
   let fixture: ComponentFixture<CreateUserComponent>;
   const userServiceSpy = jasmine.createSpyObj('UsersService', ['createUser']);
-  const getQuoteSpy = userServiceSpy.createUser.and.returnValue(of([{}]));
+  userServiceSpy.createUser.and.returnValue(of([{}]));
   
   let router: Router;
-  let usersService: UsersService;
   let user: UserModel;
 
   beforeEach(async(() => {
@@ -36,13 +35,12 @@ describe('CreateUserComponent', () => {
     fixture = TestBed.createComponent(CreateUserComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router);
-    usersService = TestBed.inject(UsersService);
     fixture.detectChanges();
   });
 
   it('should create new user', () => {
     component.handleNewUser(user);
-    expect(usersService.createUser).toHaveBeenCalled();
+    expect(userServiceSpy.createUser).toHaveBeenCalled();
   })
 
   it('should call navigate', () => {
