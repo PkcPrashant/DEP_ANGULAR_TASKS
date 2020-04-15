@@ -14,5 +14,5 @@ describe('UserStatusPipe', () => {
       age: 20
     };
     expect(pipe.transform(user)).toEqual('Activate');
-  });
+
 });

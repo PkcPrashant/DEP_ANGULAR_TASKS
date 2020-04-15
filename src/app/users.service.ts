@@ -36,7 +36,6 @@ export class UsersService {
     return this.http.put<UserModel>(this._USERS_BASE_URL + user?.id, {
       password: user?.password,
       age: user?.age
-    });
  }
 
   getActiveUsers(): Observable<UserModel[]>{
