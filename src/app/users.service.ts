@@ -32,12 +32,10 @@ export class UsersService {
     return this.http.post<UserModel>(this._USERS_BASE_URL, user);
   }
 
-  updateUser(user: Partial<UserModel>) {
-    console.log("USS u,",user);
-    return this.http.put(this._USERS_BASE_URL + user.id, {
-      password: user.password,
-      age: user.age
-    });
+  updateUser(user: UserModel): Observable<UserModel> {
+    return this.http.put<UserModel>(this._USERS_BASE_URL + user?.id, {
+      password: user?.password,
+      age: user?.age
  }
 
   getActiveUsers(): Observable<UserModel[]>{
