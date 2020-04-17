@@ -19,8 +19,8 @@ export class UsersService {
   }
 
   changeStatus(userData: UserModel): Observable<UserModel>{
-    return this.http.put<UserModel>(this._USERS_BASE_URL+userData.id,{
-      isDeleted: !userData.isDeleted
+    return this.http.put<UserModel>(this._USERS_BASE_URL+userData?.id,{
+      isDeleted: !userData?.isDeleted
     });
   }
 
